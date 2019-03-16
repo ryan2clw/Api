@@ -22,10 +22,10 @@ namespace Api
                 .AddJwtBearer("Bearer", options =>
                 {
 #if DEBUG
-                    options.Authority = "http://localhost:5002";
+                    options.Authority = "http://3.17.59.136:5002";
                     options.RequireHttpsMetadata = false;
 #else
-                    options.Authority = "https://localhost:5002"; 
+                    options.Authority = "https://seniordevops.com:5002"; 
                     options.RequireHttpsMetadata = true;
 #endif
                     options.Audience = "api1";

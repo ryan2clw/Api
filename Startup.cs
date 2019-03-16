@@ -21,8 +21,13 @@ namespace Api
             services.AddAuthentication("Bearer")
                 .AddJwtBearer("Bearer", options =>
                 {
-                    options.Authority = "http://localhost:5002"; // MARK TO DO: USE DEBUG DIRECTIVE AFTER DEPLOYING IDENTITY SERVER
+#if DEBUG
+                    options.Authority = "http://localhost:5002";
                     options.RequireHttpsMetadata = false;
+#else
+                    options.Authority = "https://localhost:5002"; 
+                    options.RequireHttpsMetadata = true;
+#endif
                     options.Audience = "api1";
                     options.TokenValidationParameters = new TokenValidationParameters
                     {
@@ -37,7 +42,6 @@ namespace Api
         public void Configure(IApplicationBuilder app)
         {
             app.UseAuthentication();
-
             app.UseMvc();
         }
     }

@@ -22,11 +22,11 @@ namespace Api
                 .AddJwtBearer("Bearer", options =>
                 {
 #if DEBUG
-                    options.Authority = "http://3.17.59.136:5002";
+                    options.Authority = "http://127.0.0.1:5002";
                     options.RequireHttpsMetadata = false;
 #else
-                    options.Authority = "https://seniordevops.com:5002"; 
-                    options.RequireHttpsMetadata = true;
+                    options.Authority = "https://127.0.0.1:5002"; 
+                    options.RequireHttpsMetadata = false; // MARK TO DO: make staging dir
 #endif
                     options.Audience = "api1";
                     options.TokenValidationParameters = new TokenValidationParameters
